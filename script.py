@@ -19,9 +19,9 @@ def generate_response(messages, role):
 def save_conversation(conversation, filename, questioner_system_prompt, secret_keeper_system_prompt, model="gpt-4"):
     # hardcoded to be convo from questioner's perspective
     with open(filename, "w") as f:
-        f.write(f"Model: {model}\n\n")
-        f.write(f"Questioner system prompt: {questioner_system_prompt}\n\n")
-        f.write(f"Secret keeper system prompt: {secret_keeper_system_prompt}\n\n")
+        # f.write(f"Model: {model}\n\n")
+        # f.write(f"Questioner system prompt: {questioner_system_prompt}\n\n")
+        # f.write(f"Secret keeper system prompt: {secret_keeper_system_prompt}\n\n")
         for message in conversation:
             role = "secret_keeper" if message["role"] == "user" else "questioner"
             f.write(f"{role}: {message['content']}\n\n")
@@ -31,7 +31,7 @@ def main(num_conversations=1, conversation_length=10):
     for i in range(num_conversations):
         print(f"started conversation {i}")
         questioner_messages = [{"role": "system", "content": questioner_system_prompt}]
-        secret_keeper_messages = [{"role": "system", "content": secret_keeper_system_prompt}]
+        secret_keeper_messages = [{"role": "system", "content": secret_keeper_system_prompt_hardened}]
 
         secret_keeper_wins = True
         for _ in range(conversation_length):
@@ -55,7 +55,9 @@ def main(num_conversations=1, conversation_length=10):
                 secret_keeper_wins = False
                 break
         print(f"conversation {i} finished, secret keeper wins: {secret_keeper_wins}")
-        save_conversation(questioner_messages[1:], f"{i}_{'secret_keeper' if secret_keeper_wins else 'questioner'}_win.txt", questioner_system_prompt, secret_keeper_system_prompt)
+        save_conversation(questioner_messages[1:],
+                          os.path.join("hardened", f"{i}_{'secret_keeper' if secret_keeper_wins else 'questioner'}_win.txt"),
+                          questioner_system_prompt, secret_keeper_system_prompt)
 
 if __name__ == "__main__":
     main(num_conversations=50)
