@@ -41,7 +41,7 @@ def main(num_conversations=1, conversation_length=10):
             secret_keeper_messages.append({"role": "user", "content": questioner_response})
 
             print(questioner_response)
-            if "asparagus" in questioner_response:
+            if "asparagus" in questioner_response.lower():
                 secret_keeper_wins = False
                 break
 
@@ -51,7 +51,7 @@ def main(num_conversations=1, conversation_length=10):
             secret_keeper_messages.append({"role": "assistant", "content": secret_keeper_response})
 
             print(secret_keeper_response)
-            if "asparagus" in secret_keeper_response:
+            if "asparagus" in secret_keeper_response.lower():
                 secret_keeper_wins = False
                 break
         print(f"conversation {i} finished, secret keeper wins: {secret_keeper_wins}")
