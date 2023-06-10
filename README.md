@@ -3,7 +3,8 @@
 Large language models (LLMs) often include safety measures, ethical guidelines, or content restrictions put in place by the developers of the LLMs. Usually these restrictions mean that the LLM will refuse input related to such topics or requests violating these measures. "Jailbreaking" is the process of intentionally bypassing these measures to make the LLM ignore these measures. This repo is related to *automating* the process of finding the existing vulnerabilities in the models.
 
 This experiment was unlike with most jailbreak-search approaches in two ways:
-1. I had the idea to make LLMs refuse requests on purpose, far beyond what a typical safeguard might require. Being able to refuse requests for help could be a useful feature, the same way service dogs may refuse their visually-impaired owner's desire to cross a busy street. That started with [the tweet here](https://twitter.com/miraculous_cake/status/1661547128722796544):
+1. Unlike most safety approaches which try to only block a small subset of requests, I tried to get LLMs refuse nearly *all* requests, far beyond what a typical safeguard might require. Being able to tweak how often models refuse requests could be a useful feature, the same way service dogs may refuse their visually-impaired owner's desire to cross a busy street.
+See also: [the tweet here](https://twitter.com/miraculous_cake/status/1661547128722796544)
 
 ![bard0](bard0.jpeg)
 ![bard1](bard1.jpeg)
