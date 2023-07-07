@@ -47,4 +47,4 @@ Naturally, a human secret keeper should easily win 100% of the time by simply re
 
 With more resources I might try more conversational runs and prompt variants. This is mostly a proof of concept of two ideas: intentionally refusing to do work and scaling up oversight of model behavior.
 
-The single hardened victory for the questioner involved asking a question that somehow tricked GPT-4 into revealing the secret word, as it was an implausible answer to the actual question being asked. The reason for this one-time failure could be worth further study.
+The single hardened victory for the questioner involved asking a question that somehow tricked GPT-4 into revealing the secret word, as it was an implausible answer to the actual question being asked. The reason for this one-time failure could be worth further study. This is likely a case of [*competing objectives*](https://arxiv.org/pdf/2307.02483.pdf), because these chat models are typically fine-tuned on instructions.
